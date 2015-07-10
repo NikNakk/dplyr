@@ -648,6 +648,26 @@ left_join.tbl_sql <- function(x, y, by = NULL, copy = FALSE,
 
 #' @rdname join.tbl_sql
 #' @export
+right_join.tbl_sql <- function(x, y, by = NULL, copy = FALSE,
+                              auto_index = FALSE, ...) {
+  by <- common_by(by, x, y)
+  y <- auto_copy(x, y, copy, indexes = if (auto_index) list(by$y))
+  sql <- sql_join(x$src$con, x, y, type = "right", by = by)
+  update(tbl(x$src, sql), group_by = groups(x))
+}
+
+#' @rdname join.tbl_sql
+#' @export
+full_join.tbl_sql <- function(x, y, by = NULL, copy = FALSE,
+                              auto_index = FALSE, ...) {
+  by <- common_by(by, x, y)
+  y <- auto_copy(x, y, copy, indexes = if (auto_index) list(by$y))
+  sql <- sql_join(x$src$con, x, y, type = "full", by = by)
+  update(tbl(x$src, sql), group_by = groups(x))
+}
+
+#' @rdname join.tbl_sql
+#' @export
 semi_join.tbl_sql <- function(x, y, by = NULL, copy = FALSE,
                               auto_index = FALSE, ...) {
   by <- common_by(by, x, y)
