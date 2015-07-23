@@ -2,9 +2,11 @@
 % Please edit documentation in R/tbl-sql.r
 \name{join.tbl_sql}
 \alias{anti_join.tbl_sql}
+\alias{full_join.tbl_sql}
 \alias{inner_join.tbl_sql}
 \alias{join.tbl_sql}
 \alias{left_join.tbl_sql}
+\alias{right_join.tbl_sql}
 \alias{semi_join.tbl_sql}
 \title{Join sql tbls.}
 \usage{
@@ -12,6 +14,12 @@
   auto_index = FALSE, ...)
 
 \method{left_join}{tbl_sql}(x, y, by = NULL, copy = FALSE,
+  auto_index = FALSE, ...)
+
+\method{right_join}{tbl_sql}(x, y, by = NULL, copy = FALSE,
+  auto_index = FALSE, ...)
+
+\method{full_join}{tbl_sql}(x, y, by = NULL, copy = FALSE,
   auto_index = FALSE, ...)
 
 \method{semi_join}{tbl_sql}(x, y, by = NULL, copy = FALSE,
